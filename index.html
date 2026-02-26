@@ -227,899 +227,817 @@
             transform-origin: 50% 50%;
         }
         .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            margin-left: 15px;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Разделы */
-        .section {
-            padding: 6rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3.5rem;
-            font-size: 2.8rem;
-            color: var(--secondary);
-            position: relative;
-            font-weight: 700;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        /* Каталог товаров */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            transition: left 0.7s;
-        }
-
-        .product-card:hover::before {
-            left: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .product-card p {
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .add-to-cart {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .add-to-cart:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .add-to-cart::after {
-            content: '➕';
-            font-size: 14px;
-        }
-
-        /* Раздел о компании */
-        .about {
-            background-color: var(--light);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            color: var(--secondary);
-            margin-bottom: 1.8rem;
-            font-size: 2.4rem;
-            font-weight: 700;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--dark-gray);
-            font-size: 1.1rem;
-        }
-
-        .about-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transform: rotateY(-5deg);
-            transition: transform 0.5s;
-        }
-
-        .about-image:hover {
-            transform: rotateY(0);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Контакты */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .contact-item {
-            margin-bottom: 2rem;
-        }
-
-        .contact-item h3 {
-            color: var(--secondary);
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        .contact-item h3::before {
-            content: '📍';
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            box-sizing: border-box;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        /* Корзина */
-        #cart-items {
-            margin-bottom: 2.5rem;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-         .cart-item-actions {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-
-        .btn-remove {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .btn-remove:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        .cart-total {
-            text-align: right;
-            margin-bottom: 2.5rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--secondary);
-            padding: 1rem 0;
-            border-top: 2px dashed #eee;
-            border-bottom: 2px dashed #eee;
-        }
-
-        /* Кнопка «Наверх» */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            display: none;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
-        }
-
-        .back-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top.visible {
-            display: block;
-        }
-
-        /* Футер */
-        .footer {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 5rem 0 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-column h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .footer-links a::before {
-            content: '→';
-            position: absolute;
-            left: -15px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-
-        .footer-links a:hover::before {
-            opacity: 1;
-            left: -8px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
-
-        /* Модальное окно */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            transform: translateY(-50px);
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-gray);
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.4rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1.2rem;
-                text-align: center;
-            }
-
-            .nav-menu {
-                gap: 1.2rem;
-            }
-
-            .hero {
-                height: auto;
-                padding: 4rem 0;
-            }
-
-            .hero h1 {
-                font-size: 2.6rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-content {
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-                max-width: none;
-            }
-
-            .btn {
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .products-grid {
-                gap: 1.2rem;
-            }
-
-            .product-card {
-                padding: 1.5rem;
-            }
-
-            .product-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .product-card p {
-                font-size: 1.1rem;
-            }
-
-            .add-to-cart {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-
-            .about-text h2 {
-                font-size: 1.8rem;
-            }
-
-            .about-text p {
-                font-size: 1rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 12px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 24px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Плавные переходы при загрузке */
-        body {
-            opacity: 0;
-            animation: fadeInBody 0.5s ease-in forwards;
-        }
-
-        @keyframes fadeInBody {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    background: transparent;
+    border: 2px solid var(--white);
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Разделы */
+.section {
+    padding: 6rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-size: 2.8rem;
+    color: var(--secondary);
+    position: relative;
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+/* Каталог товаров */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: left 0.7s;
+}
+
+.product-card:hover::before {
+    left: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+.product-card p {
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.add-to-cart {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart::after {
+    content: '➕';
+    font-size: 14px;
+}
+
+/* Раздел о компании */
+.about {
+    background-color: var(--light);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    color: var(--secondary);
+    margin-bottom: 1.8rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+}
+
+.about-image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transform: rotateY(-5deg);
+    transition: transform 0.5s;
+}
+
+.about-image:hover {
+    transform: rotateY(0);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Контакты */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.contact-item {
+    margin-bottom: 2rem;
+}
+
+.contact-item h3 {
+    color: var(--secondary);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.contact-item h3::before {
+    content: '📍';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.contact-form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Корзина */
+#cart-items {
+    margin-bottom: 2.5rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.btn-remove {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    .btn-remove:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.cart-total {
+    text-align: right;
+    margin-bottom: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--secondary);
+    padding: 1rem 0;
+    border-top: 2px dashed #eee;
+    border-bottom: 2px dashed #eee;
+}
+
+/* Кнопка «Наверх» */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: none;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+.back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.visible {
+    display: block;
+}
+
+/* Футер */
+.footer {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 5rem 0 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+}
+
+.footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--white);
+    padding-left: 5px;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+    left: -8px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--primary);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .header-content {
+        padding: 0 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Здесь можно реализовать мобильное меню */
+    }
+    
+    .hero {
+        margin-top: 60px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
     </style>
 </head>
 <body>
     <!-- Шапка сайта -->
     <header class="site-header">
         <div class="header-content">
-            <a href="#top" class="logo">Red<span>Line</span></a>
+            <a href="#" class="logo">Red<span>Line</span></a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#top" class="nav-link">Главная</a></li>
-                    <li><a href="#products" class="nav-link">Каталог</a></li>
-                    <li><a href="#about" class="nav-link">О нас</a></li>
-                    <li><a href="#contact" class="nav-link">Контакты</a></li>
-                </ul>
-                <div class="cart-icon">
-                    <a href="cart.html">
-                        🛒 <span id="cart-count">0</span>
-                    </a>
-                </div>
+                    <li><a href="#home" class="nav-link">Главная</a></li>
+            <li><a href="#products" class="nav-link">Каталог</a></li>
+            <li><a href="#about" class="nav-link">О компании</a></li>
+            <li><a href="#contacts" class="nav-link">Контакты</a></li>
+        </ul>
             </nav>
+            <div class="cart-icon">
+                <a href="#cart">
+                    <span class="cart-symbol">🛒</span>
+            <span id="cart-count">0</span>
+        </a>
+            </div>
         </div>
     </header>
 
     <!-- Главный экран -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
             <h1>Качественные автозапчасти</h1>
-            <p>Широкий выбор запчастей для всех марок автомобилей с гарантией</p>
+            <p>Широкий выбор запчастей для всех марок автомобилей. Гарантия качества и доступные цены.</p>
             <a href="#products" class="btn">Перейти в каталог</a>
+            <a href="#about" class="btn btn-secondary">О нас</a>
         </div>
     </section>
 
     <!-- Каталог товаров -->
-    <section id="products" class="section">
-        <h2 class="section-title">Каталог товаров</h2>
+    <section class="section" id="products">
+        <h2 class="section-title">Наш каталог</h2>
         <div class="products-grid">
             <div class="product-card">
-                <h3>Масляный фильтр</h3>
-                <p>Цена: 500 руб.</p>
-                <button class="btn add-to-cart" onclick="addToCart({id: 1, name: 'Масляный фильтр', price: 500})">В корзину</button>
-            </div>
-            <div class="product-card">
                 <h3>Тормозные колодки</h3>
-                <p>Цена: 1 200 руб.</p>
-                <button class="btn add-to-cart" onclick="addToCart({id: 2, name: 'Тормозные колодки', price: 1200})">В корзину</button>
+                <p>3 500 ₽</p>
+                <button class="add-to-cart">В корзину</button>
             </div>
             <div class="product-card">
+                <h3>Масляный фильтр</h3>
+                <p>800 ₽</p>
+                <button class="add-to-cart">В корзину</button>
+            </div>
+            <div class="product-card">
+                <div class="product-card">
                 <h3>Воздушный фильтр</h3>
-                <p>Цена: 350 руб.</p>
-                <button class="btn add-to-cart" onclick="addToCart({id: 3, name: 'Воздушный фильтр', price: 350})">В корзину</button>
+                <p>1 200 ₽</p>
+                <button class="add-to-cart">В корзину</button>
             </div>
             <div class="product-card">
                 <h3>Свечи зажигания</h3>
-                <p>Цена: 800 руб.</p>
-                <button class="btn add-to-cart" onclick="addToCart({id: 4, name: 'Свечи зажигания', price: 800})">В корзину</button>
+                <p>2 400 ₽</p>
+                <button class="add-to-cart">В корзину</button>
             </div>
         </div>
     </section>
 
     <!-- О компании -->
-    <section id="about" class="section about">
-        <h2 class="section-title">О нас</h2>
+    <section class="section about" id="about">
+        <h2 class="section-title">О компании</h2>
         <div class="about-content">
             <div class="about-text">
-                <h2>Надёжный поставщик автозапчастей</h2>
-                <p>Мы работаем на рынке автомобильных запчастей более 10 лет и заслужили доверие тысяч клиентов. В нашем ассортименте — только сертифицированные товары от проверенных производителей.</p>
-                <p>Предоставляем гарантию на все товары и оперативную доставку по всей стране. Наша команда профессионалов всегда готова помочь с выбором подходящих запчастей для вашего автомобиля.</p>
+                <h2>Мы — Red Line</h2>
+                <p>С 2010 года мы поставляем качественные автозапчасти для легковых и грузовых автомобилей. Наша компания сотрудничает напрямую с ведущими производителями, что позволяет предлагать клиентам лучшие цены.</p>
+                <p>Мы гарантируем подлинность всех запчастей и предоставляем официальную гарантию на весь ассортимент.</p>
+                <ul style="margin-top: 1.5rem; padding-left: 1.5rem;">
+                    <li>Более 10 000 наименований в каталоге</li>
+            <li>Доставка по всей России</li>
+            <li>Гарантия 1 год на все товары</li>
+            <li>Профессиональная консультация</li>
+        </ul>
             </div>
             <div class="about-image">
-                <img src="image/about.jpg" alt="О компании Red Line">
+                <img src="image/about.jpg" alt="Офис компании Red Line">
             </div>
         </div>
     </section>
 
     <!-- Контакты -->
-    <section id="contact" class="section">
+    <section class="section" id="contacts">
         <h2 class="section-title">Контакты</h2>
         <div class="contact-content">
             <div>
                 <div class="contact-item">
                     <h3>Адрес</h3>
-            <p>г. Москва, ул. Автомобильная, д. 15</p>
+                    <p>г. Москва, ул. Автомобильная, д. 15</p>
         </div>
-        <div class="contact-item">
+                <div class="contact-item">
             <h3>Телефон</h3>
-            <p>+7 (495) 123‑45‑67</p>
+            <p>+7 (495) 123-45-67</p>
         </div>
-        <div class="contact-item">
+                <div class="contact-item">
             <h3>Email</h3>
-            <p>info@redline.ru</p>
+            <p>info@redline-auto.ru</p>
         </div>
-        <div class="contact-item">
+                <div class="contact-item">
             <h3>Режим работы</h3>
-            <p>Пн–Пт: 9:00–19:00<br>Сб: 10:00–17:00</p>
+            <p>Пн-Пт: 9:00–19:00<br>Сб-Вс: 10:00–18:00</p>
         </div>
-    </div>
-    <div>
-        <form class="contact-form">
-            <div class="form-group">
-                <label for="name">Имя</label>
-                <input type="text" id="name" placeholder="Ваше имя">
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Ваш email">
-            </div>
-            <div class="form-group">
-                <label for="message">Сообщение</label>
-                <textarea id="message" rows="5" placeholder="Ваше сообщение"></textarea>
-            </div>
-            <button type="submit" class="btn">Отправить</button>
-        </form>
-    </div>
-</div>
-</section>
-
-<!-- Кнопка «Наверх» -->
-<button class="back-to-top" onclick="scrollToTop()">Главное</button>
-
-<!-- Футер -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-column">
-            <h3>Red Line</h3>
-            <p>Качественные автозапчасти с гарантией и доставкой.</p>
-            <div class="social-links">
-                <a href="#" class="social-link">🗼</a>
-                <a href="#" class="social-link">📷
-                <a href="#" class="social-link">🗼</a>
-                <a href="#" class="social-link">📷</a>
-                <a href="#" class="social-link">💬</a>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem; color: var(--secondary);">Напишите нам</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
             </div>
         </div>
-        <div class="footer-column">
-            <h3>Навигация</h3>
-            <ul class="footer-links">
-                <li><a href="#top">Главная</a></li>
-                <li><a href="#products">Каталог</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
+    </section>
+
+    <!-- Корзина (модальное окно) -->
+    <div id="cartModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 2rem; border-radius: var(--border-radius); width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto;">
+            <h3 style="margin-bottom: 1.5rem; color: var(--secondary);">Корзина покупок</h3>
+            <div id="cart-items">
+                <!-- Здесь будут отображаться товары в корзине -->
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>Тормозные колодки</h4>
+                <span>3 500 ₽ × 1 шт.</span>
+            </div>
+            <div class="cart-item-actions">
+                <button class="btn-remove">Удалить</button>
+            </div>
         </div>
-        <div class="footer-column">
-            <h3>Контакты</h3>
-            <ul class="footer-links">
-                <li>+7 (495) 123‑45‑67</li>
-                <li>info@redline.ru</li>
-                <li>г. Москва, ул. Автомобильная, д. 15</li>
-            </ul>
+            </div>
+            <div class="cart-total">
+                Итого: <span id="total-price">3 500 ₽</span>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn" style="width: 100%;">Оформить заказ</button>
+            </div>
         </div>
     </div>
-    <div class="copyright">
-        &copy; 2024 Red Line. Все права защищены.
-    </div>
-</footer>
 
-<!-- Модальное окно для уведомлений -->
-<div id="notificationModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle">Успешно!</h3>
-        <p id="modalMessage">Товар добавлен в корзину</p>
-    </div>
-</div>
+    <!-- Кнопка «Наверх» -->
+    <button class="back-to-top">Наверх</button>
 
-<script>
-    // Функция для кнопки «Наверх»
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Red Line</h3>
+                <p>Качественные автозапчасти с гарантией. Более 10 лет на рынке.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">VK</a>
+            <a href="#" class="social-link">TG</a>
+            <a href="#" class="social-link">YT</a>
+        </div>
+            </div>
+            <div class="footer-column">
+                <h3>Каталог</h3>
+                <ul class="footer-links">
+            <li><a href="#">Тормозные системы</a></li>
+            <li><a href="#">Фильтры</a></li>
+            <li><a href="#">Зажигание</a></li>
+            <li><a href="#">Подвеска</a></li>
+            <li><a href="#">Электрика</a></li>
+        </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Компания</h3>
+                <ul class="footer-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#">Доставка</a></li>
+            <li><a href="#">Гарантия</a></li>
+        </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Помощь</h3>
+                <ul class="footer-links">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Возврат</a></li>
+            <li><a href="#">Оплата</a></li>
+            <li><a href="#">Политика конфиденциальности</a></li>
+        </ul>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 2rem; color: #bdc3c7; font-size: 0.9rem;">
+            © 2024 Red Line. Все права защищены.
+        </div>
+    </footer>
 
-    // Показ кнопки при прокрутке
-    window.addEventListener('scroll', function() {
-        const backToTop = document.querySelector('.back-to-top');
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
+    <script>
+        // JavaScript для функциональности сайта
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработка добавления в корзину
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+            const productPrice = productCard.querySelector('p').textContent;
 
-    // Управление корзиной
-    let cart = [];
+            // Здесь будет логика добавления в корзину (например, обновление счётчика и модального окна)
+            alert(`${productName} добавлен в корзину!`);
+                });
+            });
 
-    function addToCart(product) {
-        cart.push(product);
-        updateCartCount();
-        showNotification(`Товар "${product.name}" добавлен в корзину!`, 'success');
-    }
+            // Показ/скрытие кнопки «Наверх»
+            const backToTopBtn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) { 
+                backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
 
-    function updateCartCount() {
-        document.getElementById('cart-count').textContent = cart.length;
-    }
-
-    // Функции для модального окна
-    function showNotification(message, type = 'info') {
-        const modal = document.getElementById('notificationModal');
-        const title = document.getElementById('modalTitle');
-        const messageEl = document.getElementById('modalMessage');
-
-        title.textContent = type === 'success' ? 'Успешно!' : 'Уведомление';
-        messageEl.textContent = message;
-
-        modal.classList.add('active');
-
-        // Автоматическое закрытие через 3 секунды
-        setTimeout(closeModal, 3000);
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('notificationModal');
-        modal.classList.remove('active');
-    }
-
-    // Закрытие модального окна при клике вне его
-    window.onclick = function(event) {
-        const modal = document.getElementById('notificationModal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    };
-
-    // Плавная прокрутка к якорям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            // Плавная прокрутка к верху
+            backToTopBtn.addEventListener('click', function() {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Учитываем высоту шапки
-                    behavior: 'smooth'
+                    top: 0,
+            behavior: 'smooth'
+                });
+            });
+
+            // Открытие/закрытие корзины
+            const cartIcon = document.querySelector('.cart-icon a');
+            const cartModal = document.getElementById('cartModal');
+
+            cartIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                cartModal.style.display = 'flex';
+            });
+
+            // Закрытие корзины при клике вне её области
+            window.addEventListener('click', function(e) {
+                if (e.target === cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            });
+
+            // Обработка формы контактов
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Здесь будет отправка данных формы (AJAX-запрос)
+                alert('Сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+                contactForm.reset();
+            });
+
+            // Логика корзины (добавление/удаление товаров)
+            let cartItems = [];
+            const cartCount = document.getElementById('cart-count');
+            const totalPriceElement = document.getElementById('total-price');
+
+            function updateCart() {
+                cartCount.textContent = cartItems.length;
+                const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+                totalPriceElement.textContent = `${total.toLocaleString()} ₽`;
+
+                // Обновляем отображение товаров в корзине
+                const cartItemsContainer = document.getElementById('cart-items');
+                cartItemsContainer.innerHTML = '';
+
+                cartItems.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+            <span>${item.price.toLocaleString()} ₽ × 1 шт.</span>
+        </div>
+        <div class="cart-item-actions">
+            <button class="btn-remove" data-index="${index}">Удалить</button>
+        </div>`;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                // Добавляем обработчики для кнопок удаления
+                document.querySelectorAll('.btn-remove').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        cartItems.splice(index, 1);
+                        updateCart();
+                    });
                 });
             }
+
+            // Обработчик добавления товара в корзину
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const name = productCard.querySelector('h3').textContent;
+            const priceText = productCard.querySelector('p').textContent;
+            // Извлекаем число из строки цены (убираем символы валюты)
+            const price = parseInt(priceText.replace(/[^\d]/g, ''));
+
+            cartItems.push({ name, price });
+            updateCart();
+
+            // Визуальный фидбек
+            this.textContent = 'Добавлено!';
+            setTimeout(() => {
+                this.textContent = 'В корзину';
+            }, 1500);
         });
     });
 
-    // Анимация появления элементов при прокрутке
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Применяем анимацию к нужным элементам
-    document.querySelectorAll('.product-card, .about-image, .contact-form').forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
-    });
-</script>
+    // Инициализация корзины
+    updateCart();
+});
+    </script>
 </body>
 </html>
