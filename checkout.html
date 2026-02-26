@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа — Red Line</title>
+    <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --white: #ffffff;
+            --light: #ecf0f1;
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .checkout-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-size: 2.4rem;
+        }
+
+        .order-summary {
+            margin-bottom: 2rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-total {
+            text-align: right;
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--secondary);
+            padding: 1rem;
+            border-top: 2px dashed #eee;
+        }
+
+        .customer-form {
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1 class="checkout-title">Оформление заказа</h1>
+
+        <div class="order-summary">
+            <h2>Состав заказа</h2>
+            <div id="order-items"></div>
+            <div class="order-total">
+                Итого: <span id="order-total">0 ₽</span>
+            </div>
+        </div>
+
+        <form id="customerForm" class="customer-form">
+            <div class="form-group">
+                <label for="customerName">Имя</label>
+                <input type="text" id="customerName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Телефон</label>
+                <input type="tel" id="customerPhone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Email</label>
+                <input type="email" id="customerEmail" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="deliveryAddress">Адрес доставки</label>
+                <input type="text" id="deliveryAddress" name="address" required>
+            </div>
+            <button type="submit" class="btn">Подтвердить заказ</button>
+        </form>
+    </div>
+
+    <script>
+        // Получаем данные корзины из localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const orderItems = document.getElementById('order-items');
+        const orderTotal = document.getElementById('order-total');
+
+        // Отображаем товары в заказе
+        let total = 0;
+
+        if (cart.length === 0) {
+            orderItems.innerHTML = '<p>Корзина пуста</p>';
+        } else {
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div>
+                <span>${item.name}</span>
+                <span>× ${item.quantity}</span>
+            </div>
+            <div>${itemTotal} ₽</div>`;
+                orderItems.appendChild(orderItem);
+            });
+        }
+
+        orderTotal.textContent = `${total} ₽`;
+
+        // Обработка формы заказа
+        document.getElementById('customerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = {
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                deliveryAddress: document.getElementById('deliveryAddress').value,
+                order: cart,
+                total: total,
+                timestamp: new Date().toISOString()
+            };
+
+            // Здесь можно отправить данные на сервер
+            console.log('Заказ отправлен:', formData);
+
+            alert('Заказ успешно оформлен! Мы свяжемся с вами для подтверждения.');
+
+            // Очищаем корзину
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
