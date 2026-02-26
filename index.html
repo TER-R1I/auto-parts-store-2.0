@@ -1023,25 +1023,24 @@
 <script>
 // Управление корзиной
 let cart = [];
-const cartCount = document.getElementById(‘cart-count’);
-const cartItems = document.getElementById(‘cart-items’);
-const totalPrice = document.getElementById(‘total-price’);
-const cartModal = document.getElementById(‘cartModal’);
-const cartToggle = document.getElementById(‘cartToggle’);
-const checkoutBtn = document.getElementById(‘checkoutBtn’);
+const cartCount = document.getElementById('cart-count');
+const cartItems = document.getElementById('cart-items');
+const totalPrice = document.getElementById('total-price');
+const cartModal = document.getElementById('cartModal');
+const cartToggle = document.getElementById('cartToggle');
+const checkoutBtn = document.getElementById('checkoutBtn');
 
 // Открытие/закрытие корзины
-cartToggle.addEventListener(‘click’, (e) => {
-e.preventDefault();
-cartModal.style.display = cartModal.style.display === ‘none’ ? ‘flex’ : ‘none’;
+cartToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  cartModal.style.display = cartModal.style.display === 'none' ? 'flex' : 'none';
 });
 
-cartModal.addEventListener(‘click’, (e) => {
-if (e.target === cartModal) {
-cartModal.style.display = ‘none’;
-}
+cartModal.addEventListener('click', (e) => {
+  if (e.target === cartModal) {
+    cartModal.style.display = 'none';
+  }
 });
-
 // Добавление товара в корзину
 document.querySelectorAll(‘.add-to-cart’).forEach(button => {
 button.addEventListener(‘click’, () => {
