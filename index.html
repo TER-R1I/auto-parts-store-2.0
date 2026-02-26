@@ -429,52 +429,72 @@
       visibility: visible;
     }
 
-    /* Подвал */
-    .site-footer {
-      background: var(--secondary);
-      color: var(--white);
-      padding: 3rem 2rem 1rem;
-      text-align: center;
-    }
+    /* Стили для подвала */
+.site-footer {
+  background: var(--secondary);
+  color: var(--white);
+  padding: 3rem 2rem 1rem;
+  text-align: center;
+}
 
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
 
-    .footer-section h3 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
+.footer-section h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
 
-    .footer-links {
-      list-style: none;
-    }
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
 
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
 
-    .footer-links a {
-      color: var(--light);
-      text-decoration: none;
-      transition: var(--transition);
-    }
+.footer-links a {
+  color: var(--light);
+  text-decoration: none;
+  transition: var(--transition);
+}
 
-    .footer-links a:hover {
-      color: var(--white);
-    }
+.footer-links a:hover {
+  color: var(--white);
+}
 
-    .copyright {
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.9rem;
-      color: var(--gray);
-    }
+/* Стили для социальных ссылок */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.social-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--primary);
+}
+
+/* Стиль копирайта */
+.copyright {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: var(--gray);
+}
   </style>
 </head>
 <body>
@@ -609,34 +629,48 @@
   <a href="#" class="back-to-top" id="backToTop">↑</a>
 
 <!-- Подвал сайта -->
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Red Line</h3>
-        <p>Качественные автозапчасти с гарантией</p>
-      </div>
-      <div class="footer-section">
-        <h3>Контакты</h3>
-        <ul class="footer-links">
-          <li>Телефон: +7 (XXX) XXX-XX-XX</li>
-          <li>Email: info@redline.ru</li>
-          <li>Адрес: г. Москва, ул. Примерная, д. 1</li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Информация</h3>
-        <ul class="footer-links">
-          <li><a href="#">О компании</a></li>
-          <li><a href="#">Доставка и оплата</a></li>
-          <li><a href="#">Гарантия</a></li>
-          <li><a href="#">Возврат</a></li>
-        </ul>
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Red Line</h3>
+      <p>Качественные автозапчасти с гарантией. Более 10 лет на рынке.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Социальные сети</h3>
+      <div class="social-links">
+        <a href="#" aria-label="VK">VK</a>
+        <a href="#" aria-label="Telegram">TG</a>
+        <a href="#" aria-label="YouTube">YT</a>
       </div>
     </div>
-    <div class="copyright">
-      &copy; 2026 Red Line. Все права защищены.
+
+    <div class="footer-section">
+      <h3>Каталог</h3>
+      <ul class="footer-links">
+        <li><a href="#">Тормозные системы</a></li>
+        <li><a href="#">Фильтры</a></li>
+        <li><a href="#">Зажигание</a></li>
+        <li><a href="#">Подвеска</a></li>
+        <li><a href="#">Электрика</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <div class="footer-section">
+      <h3>Компания</h3>
+      <ul class="footer-links">
+        <li><a href="#">О нас</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Доставка</a></li>
+        <li><a href="#">Гарантия</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="copyright">
+    &copy; 2026 Red Line. Все права защищены.
+  </div>
+</footer>
 
   <script>
 document.addEventListener('DOMContentLoaded', function() {
