@@ -166,34 +166,75 @@
     }
 
     // Обработка формы заказа
-    document.getElementById('orderForm').addEventListener('submit', (e) => {
-      e.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+  const savedCart = localStorage.getItem('cart');
+  if (savedCart) {
+    const cart = JSON.parse(savedCart);
+    displayOrderSummary(cart);
+  } else {
+    document.getElementById('order-items').innerHTML = '<p>Корзина пуста. Вернитесь в каталог для выбора товаров.</p>';
+    document.querySelector('form').style.display = 'none';
+    return;
+  }
+});
 
-      // Собираем данные формы
-      const formData = {
-        fullName: document.getElementById('fullName').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        address: document.getElementById('address').value,
-        cart: JSON.parse(localStorage.getItem('cart')) || [],
-        orderDate: new Date().toLocaleString(),
-        orderId: Date.now() // Простой ID заказа
-      };
+function displayOrderSummary(cart) {
+  const orderItems = document.getElementById('order-items');
+  const orderTotal = document.getElementById('order-total');
 
-      // Сохраняем заказ в localStorage (в реальном проекте — отправляем на сервер)
-      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-      orders.push(formData);
-      localStorage.setItem('orders', JSON.stringify(orders));
+  let total = 0;
 
-      // Очищаем корзину
-      localStorage.removeItem('cart');
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
 
-      // Показываем сообщение об успехе
-      alert('Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.');
+    const orderItem = document.createElement('div');
+    orderItem.innerHTML = `
+      <p><strong>${item.name}</strong> — ${item.quantity} шт. × ${item.price} ₽ = ${itemTotal} ₽</p>`;
+    orderItems.appendChild(orderItem);
+  });
 
-      // Переходим на главную страницу
-      window.location.href = 'index.html';
-    });
+  orderTotal.textContent = `${total} ₽`;
+}
+   document.getElementById('orderForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Валидация формы
+  const fullName = document.getElementById('fullName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const address = document.getElementById('address').value.trim();
+
+  if (!fullName || !phone || !email || !address) {
+    alert('Пожалуйста, заполните все поля формы.');
+    return;
+  }
+
+  // Собираем данные формы
+  const formData = {
+    fullName: fullName,
+    phone: phone,
+    email: email,
+    address: address,
+    cart: JSON.parse(localStorage.getItem('cart')) || [],
+    orderDate: new Date().toLocaleString(),
+    orderId: Date.now()
+  };
+
+  // Сохраняем заказ в localStorage
+  const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+  orders.push(formData);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  // Очищаем корзину
+  localStorage.removeItem('cart');
+
+  // Показываем сообщение об успехе
+  alert(`Заказ №${formData.orderId} успешно оформлен!\n\nМы свяжемся с вами в ближайшее время для подтверждения.`);
+
+  // Переходим на главную страницу
+  window.location.href = 'index.html';
+});
   </script>
 </body>
 </html>
